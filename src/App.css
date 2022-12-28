@@ -7,32 +7,145 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.first {
+  position: absolute;
+  display: grid;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.second {
+  display: none;
+  position: absolute;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(69, 86, 102) 0%,
+    rgb(34, 34, 34) 90%
+  );
+  width: 100vw;
+  height: 100vh;
+  animation: bounce-in-top 2s ease normal;
 }
 
-@keyframes App-logo-spin {
+.text-wrapper {
+  align-self: end;
+  justify-self: center;
+  width: fit-content;
+  animation: color-change 1s none;
+  color: #c5c9cc;
+}
+
+.center-text {
+  display: inline-block;
+  width: fit-content;
+  font-family: "Minipax";
+  font-size: 50px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid #616c77; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: 0.35em; /* Adjust as needed */
+  animation: typing 2s steps(15, end), blink-caret-initial 0.75s step-end none,
+    blink-caret 0.75s step-end infinite;
+}
+
+.icon-button {
+  margin-bottom: 10px;
+}
+
+.instagram i,
+.linkedin i,
+.github i {
+  background-color: #c5c9cc;
+}
+
+.github i:hover,
+.instagram i:hover,
+.linkedin i:hover {
+  background-color: #616c77;
+}
+
+.icon-button i {
+  color: #000;
+  border-radius: 2.6rem;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.3rem;
+  height: 2.6rem;
+  line-height: 2.6rem;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 2.6rem;
+  margin: 0 5px 10px;
+  transition: 0.2s ease-in;
+}
+
+/* The typing effect */
+@keyframes typing {
   from {
-    transform: rotate(0deg);
+    width: 0;
   }
   to {
-    transform: rotate(360deg);
+    width: 100%;
   }
+}
+
+/* The typewriter cursor effect on load */
+
+@keyframes blink-caret-initial {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #31383f;
+  }
+}
+
+/* The persistent typewriter cursor effect  */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #c5c9cc;
+  }
+}
+
+/* Bounce in div effect */
+@keyframes bounce-in-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0vw);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    border-right: 0.15em solid #616c77;
+    color: #000;
+  }
+  100% {
+    border-right: 0.15em solid #c5c9cc;
+    color: #c5c9cc;
+  }
+}
+
+@font-face {
+  font-family: "Minipax";
+  src: local("Minipax"),
+    url(./fonts/Minipax/fonts/ttf/Minipax-Bold.ttf) format("truetype");
 }
