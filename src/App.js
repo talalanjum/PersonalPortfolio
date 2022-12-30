@@ -12,7 +12,9 @@ function App() {
     <div className="App">
       <div className="first">
         <div className="text-wrapper">
-          <p className="center-text">Long way to go.</p>
+          <p id="tagline" className="center-text">
+            Long way to go.
+          </p>
         </div>
         <div className="links">
           <a
